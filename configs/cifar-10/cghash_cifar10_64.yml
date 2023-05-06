@@ -1,0 +1,67 @@
+# Setup
+setup: cghash
+
+# Dataset
+train_db_name: cifar-10
+val_db_name: cifar-10
+num_classes: 10
+
+# Augmentations
+augmentation_strategy: cutout
+augmentation_kwargs:
+   crop_size: 32
+   normalize:
+      mean: [0.4914, 0.4822, 0.4465]
+      std: [0.2023, 0.1994, 0.2010]
+   num_strong_augs: 4 
+   cutout_kwargs:
+     n_holes: 1
+     length: 16
+     random: True
+transformation_kwargs:
+   crop_size: 32
+   normalize:
+      mean: [0.4914, 0.4822, 0.4465]
+      std: [0.2023, 0.1994, 0.2010]
+
+# Model
+backbone: resnet18
+train_mode: "end2end_kl"
+eval_mode: "thre"
+finetune_backbone: True
+
+# Optimizer
+optimizer: adam
+optimizer_kwargs:
+   lr: 0.001
+   weight_decay: 0.0001
+   backbone_lr_scale: 1
+scheduler: constant
+
+# Loss
+criterion: cghash
+criterion_kwargs:
+   consistent:
+      consistent_w: 1.0
+   entropy:
+      entropy_w: 5.0
+      sharp_w: 1.0
+   mcont:
+      w: 0.1
+      tau: 1.0
+      pos_reweight: 0.5
+
+# Hyperparameters
+batch_size: 1024
+num_workers: 8
+tau: 1.0
+topk: 1000
+num_neighbors: 20
+encode_length: 64
+epochs: 200
+eval_interval: 20
+
+# Path
+cghash_subdir: cifar-cghash-l64
+cghash_checkpoint: checkpoint.pth.tar
+cghash_model: model.pth.tar
