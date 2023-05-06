@@ -2,8 +2,8 @@
     Part of Codes are forked from other work(s).
     Links and Reference would be added in open-source version.
 """
-import os
 import errno
+import os
 
 
 def mkdir_if_missing(directory):

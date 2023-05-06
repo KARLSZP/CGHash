@@ -1,7 +1,7 @@
-from torch.autograd import Function
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
+from torch.autograd import Function
 
 
 class ContrastiveModel(nn.Module):

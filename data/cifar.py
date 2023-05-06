@@ -4,11 +4,14 @@ This code is based on the Torchvision repository, which was licensed under the B
 import os
 import pickle
 import sys
+
 import numpy as np
 from PIL import Image
 from torch.utils.data import Dataset
-from utils.mypath import MyPath
-from torchvision.datasets.utils import check_integrity, download_and_extract_archive
+from torchvision.datasets.utils import (check_integrity,
+                                        download_and_extract_archive)
+
+from utils.data_path import DataPath
 
 
 class CIFAR10(Dataset):
@@ -45,7 +48,7 @@ class CIFAR10(Dataset):
         'md5': '5ff9c542aee3614f3951f8cda6e48888',
     }
 
-    def __init__(self, root=MyPath.db_root_dir('cifar-10'), train=True, transform=None,
+    def __init__(self, root=DataPath.db_root_dir('cifar-10'), train=True, transform=None,
                  download=False):
 
         super(CIFAR10, self).__init__()

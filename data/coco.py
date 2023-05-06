@@ -1,13 +1,15 @@
+import pickle as pkl
+
 import numpy as np
 import torch
 from PIL import Image
 from torch.utils.data import Dataset
-from utils.mypath import MyPath
-import pickle as pkl
+
+from utils.data_path import DataPath
 
 
 class COCO(Dataset):
-    def __init__(self, root=MyPath.db_root_dir('coco'), split="train", transform=None):
+    def __init__(self, root=DataPath.db_root_dir('coco'), split="train", transform=None):
 
         super(COCO, self).__init__()
         self.root = root

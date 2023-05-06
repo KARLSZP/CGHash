@@ -1,6 +1,7 @@
-import torch
-import numpy as np
 import collections
+
+import numpy as np
+import torch
 
 
 def collate_custom(batch):

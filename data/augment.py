@@ -1,11 +1,11 @@
 # List of augmentations based on randaugment
 import random
 
-import PIL
-import PIL.ImageOps
-import PIL.ImageEnhance
-import PIL.ImageDraw
 import numpy as np
+import PIL
+import PIL.ImageDraw
+import PIL.ImageEnhance
+import PIL.ImageOps
 import torch
 
 random_mirror = True

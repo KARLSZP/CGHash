@@ -1,6 +1,7 @@
 import torch
-from utils.utils import AverageMeter, ProgressMeter
 from tqdm import tqdm
+
+from utils.utils import AverageMeter, ProgressMeter
 
 
 def cghash_train(train_loader, model, criterion, criterion_state,

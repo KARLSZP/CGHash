@@ -1,16 +1,14 @@
 import argparse
 import os
-import torch
-import numpy as np
 
-from utils.config import create_config
-from utils.common_config import (
-    get_model, get_train_dataset,
-    get_val_dataloader, get_val_transformations
-)
-from utils.memory_bank import MemoryBank
+import numpy as np
+import torch
 from termcolor import colored
 
+from utils.common_config import (get_model, get_train_dataset,
+                                 get_val_dataloader, get_val_transformations)
+from utils.config import create_config
+from utils.memory_bank import MemoryBank
 
 # Parser
 parser = argparse.ArgumentParser()

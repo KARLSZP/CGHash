@@ -1,13 +1,15 @@
-import os
 import math
+import os
 import random
+
 import numpy as np
 import torch
 import torchvision.transforms as transforms
+from termcolor import colored
 from torch.utils.data import DataLoader
+
 from data.augment import Augment, Cutout
 from utils.collate import collate_custom
-from termcolor import colored
 
 
 def get_criterion(p):

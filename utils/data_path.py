@@ -1,6 +1,6 @@
 
 
-class MyPath(object):
+class DataPath(object):
     @staticmethod
     def db_root_dir(database=''):
         db_names = {'cifar-10', 'coco', 'nus'}

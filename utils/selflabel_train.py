@@ -1,7 +1,7 @@
 import torch
-import numpy as np
-from utils.utils import AverageMeter, ProgressMeter
 from tqdm import tqdm
+
+from utils.utils import AverageMeter, ProgressMeter
 
 
 def selflabel_train(train_loader, model, criterion, criterion_state, optimizer, epoch):

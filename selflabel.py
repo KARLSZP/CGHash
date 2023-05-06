@@ -1,12 +1,11 @@
 import argparse
 import os
 import random
+from datetime import datetime
 
 import numpy as np
 import torch
 from termcolor import colored
-from datetime import datetime
-
 
 from utils.common_config import (adjust_learning_rate, get_base_dataloader,
                                  get_base_dataset, get_criterion, get_model,
@@ -15,9 +14,8 @@ from utils.common_config import (adjust_learning_rate, get_base_dataloader,
                                  get_val_dataloader, get_val_dataset,
                                  get_val_transformations)
 from utils.config import create_config
-from utils.evaluate_utils import (evaluate_hash, evaluate_pl)
+from utils.evaluate_utils import evaluate_hash, evaluate_pl
 from utils.selflabel_train import selflabel_train
-
 
 MAX_BAD_EPOCHS = 4
 # Reproducibility
