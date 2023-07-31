@@ -7,6 +7,11 @@ A pytorch implementation of our paper:
 > Accepted in Proceedings of the 31th ACM International Conference on Multimedia [ACM MM 2023].
 
 
+## Training Schema
+
+![](imgs/diagram.jpg)
+
+
 
 ## Settings
 
@@ -29,3 +34,6 @@ A pytorch implementation of our paper:
    # e.g. ./run.sh 64 0,1
    ```
 
+## Retrieval Example
+
+![](imgs/retrieval.jpg)
