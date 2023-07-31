@@ -28,7 +28,6 @@ def selflabel_train(train_loader, model, criterion, criterion_state, optimizer, 
         _, output_augmented = model(images_augmented)
 
         """ Loss Computation """
-        """  -- Loss in account """
         total_loss = torch.tensor(0.0).cuda()
         # confidenceCE Loss
         if criterion_state['confidenceCE']:

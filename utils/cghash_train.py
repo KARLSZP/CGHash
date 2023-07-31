@@ -1,6 +1,5 @@
 import torch
 from tqdm import tqdm
-
 from utils.utils import AverageMeter, ProgressMeter
 
 
@@ -39,7 +38,6 @@ def cghash_train(train_loader, model, criterion, criterion_state,
             x_feat_code, x_feat_pred = model(x_feat_features, channel='head')
 
         """ Loss Computation """
-        """  -- Loss in account """
         total_loss = torch.tensor(0.0).cuda()
         # Consitent Loss & Inconsistent Loss
         if criterion_state['consist']:

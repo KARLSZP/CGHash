@@ -1,7 +1,3 @@
-"""
-    Part of Codes are forked from other work(s).
-    Links and Reference would be added in open-source version.
-"""
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
@@ -10,8 +6,6 @@ EPS = 1e-8
 
 
 """ CGHash """
-
-
 def entropy(x, input_as_probabilities):
     """
     Helper function to compute the entropy over the batch
@@ -148,8 +142,6 @@ class MaskedContLoss(nn.Module):
 
 
 """ Self-Labeling """
-
-
 class MaskedCrossEntropyLoss(nn.Module):
     def __init__(self):
         super(MaskedCrossEntropyLoss, self).__init__()

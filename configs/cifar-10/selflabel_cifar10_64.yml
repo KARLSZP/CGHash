@@ -26,8 +26,6 @@ transformation_kwargs:
 
 # Model
 backbone: resnet18
-train_mode: "end2end_kl"
-eval_mode: "thre"
 finetune_backbone: True
 
 # optimizer
@@ -60,6 +58,6 @@ cghash_subdir: cifar-cghash-l64
 cghash_checkpoint: checkpoint.pth.tar
 cghash_model: model.pth.tar
 
-selflabel_subdir: cifar-cghash-l64
+selflabel_subdir: cifar-selflabel-l64
 selflabel_checkpoint: checkpoint.pth.tar
 selflabel_model: model.pth.tar

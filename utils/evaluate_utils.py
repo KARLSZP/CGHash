@@ -4,13 +4,12 @@ import faiss
 import numpy as np
 import torch
 import torch.nn.functional as F
+from data.custom_dataset import NeighborsDataset
 from scipy.optimize import linear_sum_assignment
 from sklearn import metrics
 from torch.autograd import Variable
 from tqdm import tqdm
-
-from data.custom_dataset import NeighborsDataset
-from utils.common_config import get_feature_dimensions_backbone
+from utils.configurations import get_feature_dimensions_backbone
 
 
 @torch.no_grad()
@@ -203,8 +202,6 @@ def compress(train, test, model, multilabel=False, device="cuda"):
             target = batch['multi_target']
         else:
             target = batch['target']
-        # print(target)
-        # label = target.argmax(dim=1)
         label = target
         code = model(var_data, channel='encode')
 
@@ -239,6 +236,7 @@ def compress(train, test, model, multilabel=False, device="cuda"):
     # medium sep binarilization
     q_sep = np.median(queryB, axis=0)
     r_sep = np.median(retrievalB, axis=0)
+
     # 0.5 binarilization
     # q_sep = np.median(queryB, axis=0)
     # r_sep = np.median(retrievalB, axis=0)
@@ -294,8 +292,6 @@ def calculate_avg_hamming(codes):
         cross_res.append(sum(cross_sum) / len(cross_sum))
         min_cross_res.append(min(cross_sum))
 
-        # print("{}: {:.4f} (intra)<--->(inter) {:.4f}".format(k,
-        #       res[-1], cross_res[-1]))
         print_strs[k] = " {}: {:8.4f} | {:12.4f} | {:12.4f}".format(
             k, res[-1], min_cross_res[-1], cross_res[-1])
 

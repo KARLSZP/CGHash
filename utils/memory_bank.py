@@ -1,6 +1,5 @@
 """
-    Part of Codes are forked from other work(s).
-    Links and Reference would be added in open-source version.
+    Part of Codes are forked from https://github.com/wvangansbeke/Unsupervised-Classification.
 """
 import numpy as np
 import torch
@@ -23,9 +22,7 @@ class MemoryBank(object):
     def mine_nearest_neighbors(self, topk, multilabel=False, calculate_accuracy=True):
         # mine the topk nearest neighbors for every sample
         scores = torch.mm(self.features, self.features.T).cpu()
-        # BUG? appear in torch.topk: returning overflow values when using GPU
         _, indices = scores.topk(k=topk+1, dim=1)
-        # indices = indices.cpu()
 
         # evaluate
         if calculate_accuracy:

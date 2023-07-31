@@ -6,14 +6,13 @@ from datetime import datetime
 import numpy as np
 import torch
 from termcolor import colored
-
 from utils.cghash_train import cghash_train
-from utils.common_config import (adjust_learning_rate, get_base_dataloader,
-                                 get_base_dataset, get_criterion, get_model,
-                                 get_optimizer, get_train_dataloader,
-                                 get_train_dataset, get_train_transformations,
-                                 get_val_dataloader, get_val_dataset,
-                                 get_val_transformations)
+from utils.configurations import (adjust_learning_rate, get_base_dataloader,
+                                  get_base_dataset, get_criterion, get_model,
+                                  get_optimizer, get_train_dataloader,
+                                  get_train_dataset, get_train_transformations,
+                                  get_val_dataloader, get_val_dataset,
+                                  get_val_transformations)
 from utils.config import create_config
 from utils.evaluate_utils import evaluate_hash, evaluate_pl
 

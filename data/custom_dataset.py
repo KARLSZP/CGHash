@@ -1,6 +1,5 @@
 """
-    Part of Codes are forked from other work(s).
-    Links and Reference would be added in open-source version.
+    Part of Codes are forked from https://github.com/wvangansbeke/Unsupervised-Classification.
 """
 import numpy as np
 import torch

@@ -26,8 +26,6 @@ transformation_kwargs:
 
 # Model
 backbone: resnet18
-train_mode: "end2end_kl"
-eval_mode: "thre"
 finetune_backbone: True
 
 # Optimizer

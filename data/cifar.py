@@ -1,5 +1,5 @@
 """
-This code is based on the Torchvision repository, which was licensed under the BSD 3-Clause.
+    This code is based on the Torchvision repository, which was licensed under the BSD 3-Clause.
 """
 import os
 import pickle
@@ -10,7 +10,6 @@ from PIL import Image
 from torch.utils.data import Dataset
 from torchvision.datasets.utils import (check_integrity,
                                         download_and_extract_archive)
-
 from utils.data_path import DataPath
 
 

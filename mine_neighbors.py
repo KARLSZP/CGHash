@@ -4,10 +4,9 @@ import os
 import numpy as np
 import torch
 from termcolor import colored
-
-from utils.common_config import (get_model, get_train_dataset,
-                                 get_val_dataloader, get_val_transformations)
 from utils.config import create_config
+from utils.configurations import (get_model, get_train_dataset,
+                                  get_val_dataloader, get_val_transformations)
 from utils.memory_bank import MemoryBank
 
 # Parser

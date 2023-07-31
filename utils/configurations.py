@@ -1,3 +1,4 @@
+import collections
 import math
 import os
 import random
@@ -5,11 +6,9 @@ import random
 import numpy as np
 import torch
 import torchvision.transforms as transforms
+from data.augment import Augment, Cutout
 from termcolor import colored
 from torch.utils.data import DataLoader
-
-from data.augment import Augment, Cutout
-from utils.collate import collate_custom
 
 
 def get_criterion(p):
@@ -104,23 +103,7 @@ def get_model(p, pretrain_path=None):
             missing = model.load_state_dict(state, strict=False)
 
         elif p['setup'] == 'moco':
-            new_state_dict = {}
-            state_dict = state['state_dict']
-            for k in list(state_dict.keys()):
-                # Copy backbone weights
-                if k.startswith('module.encoder_q') and not k.startswith('module.encoder_q.fc'):
-                    new_k = 'backbone.' + k[len('module.encoder_q.'):]
-                    new_state_dict[new_k] = state_dict[k]
-
-                # Copy mlp weights
-                elif k.startswith('module.encoder_q.fc'):
-                    new_k = 'contrastive_head.' + \
-                        k[len('module.encoder_q.fc.'):]
-                    new_state_dict[new_k] = state_dict[k]
-
-                else:
-                    raise ValueError('Unexpected key {}'.format(k))
-            missing = model.load_state_dict(new_state_dict)
+            raise NotImplementedError
 
         elif p['setup'] == 'cghash':
             for k in list(state.keys()):
@@ -396,3 +379,34 @@ def adjust_learning_rate(p, optimizer, epoch):
         param_group['lr'] = lr
 
     return lr
+
+
+def collate_custom(batch):
+    if isinstance(batch[0], np.int64):
+        return np.stack(batch, 0)
+
+    if isinstance(batch[0], torch.Tensor):
+        return torch.stack(batch, 0)
+
+    elif isinstance(batch[0], np.ndarray):
+        return np.stack(batch, 0)
+
+    elif isinstance(batch[0], int):
+        return torch.LongTensor(batch)
+
+    elif isinstance(batch[0], float):
+        return torch.FloatTensor(batch)
+
+    elif isinstance(batch[0], str):
+        return batch
+
+    elif isinstance(batch[0], collections.Mapping):
+        batch_modified = {key: collate_custom(
+            [d[key] for d in batch]) for key in batch[0] if key.find('idx') < 0}
+        return batch_modified
+
+    elif isinstance(batch[0], collections.Sequence):
+        transposed = zip(*batch)
+        return [collate_custom(samples) for samples in transposed]
+
+    raise TypeError(('Type is {}'.format(type(batch[0]))))
