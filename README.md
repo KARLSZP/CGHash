@@ -17,7 +17,7 @@ A pytorch implementation of our paper:
 
 1. Place downloaded datasets at `datasets/`. (Cifar-10 will be downloaded automatically.)
 2. [Optional] Refer to `utils/data_path.py` to set dataset path.
-3. Place pre-trained models at `models/pretrained_backbones/`. (A 300-epoch SimCLR pre-trained models for Cifar-10 is available.)
+3. Place pre-trained models at `models/pretrained_backbones/`. (A 300-epoch SimCLR pre-trained models for Cifar-10 is available [here](https://drive.google.com/file/d/1U6uavdUtlSzN3Km066c8tdqVQHy_rLkV/view?usp=sharing).)
 4. Configure training details in `configs/[dataset]/[stage]_[dataset]_[code_length].yml`.
 
 ## Training Example for 64-bit Cifar-10
