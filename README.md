@@ -4,7 +4,7 @@ A pytorch implementation of our paper:
 
 > Unsupervised Hashing with Contrastive Learning by Exploiting Similarity Knowledge and Hidden Structure of Data
 >
-> Accepted in Proceedings of the 31th ACM International Conference on Multimedia [ACM MM 2023].
+> Accepted in Proceedings of the 31st ACM International Conference on Multimedia [ACM MM 2023].
 
 
 ## Training Schema
